@@ -1,0 +1,23 @@
+[gd_scene load_steps=5 format=3 uid="uid://bawvggabntwfh"]
+
+[ext_resource type="Script" uid="uid://cxnv22d877mql" path="res://scripts/bullet.gd" id="1_l5glv"]
+[ext_resource type="Texture2D" uid="uid://bxbhxofgtoxjx" path="res://assets/bullet.png" id="2_eoqba"]
+[ext_resource type="PackedScene" uid="uid://dge4gmamdqweu" path="res://scenes/killzone.tscn" id="3_qncy5"]
+
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_2b2rl"]
+radius = 140.0
+height = 586.0
+
+[node name="bullet" type="Node2D"]
+scale = Vector2(0.025, 0.025)
+script = ExtResource("1_l5glv")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+texture = ExtResource("2_eoqba")
+
+[node name="killzone" parent="." instance=ExtResource("3_qncy5")]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="killzone"]
+position = Vector2(141, -15)
+rotation = 1.5708
+shape = SubResource("CapsuleShape2D_2b2rl")
