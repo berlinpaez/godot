@@ -1,5 +1,6 @@
-[gd_scene load_steps=7 format=3 uid="uid://c0feoxnk55oty"]
+[gd_scene load_steps=10 format=3 uid="uid://c0feoxnk55oty"]
 
+[ext_resource type="Script" uid="uid://bxm6nmvlqmgsg" path="res://scripts/game.gd" id="1_lnu2h"]
 [ext_resource type="PackedScene" uid="uid://dawunaogp8een" path="res://scenes/player.tscn" id="1_uwrxv"]
 [ext_resource type="PackedScene" uid="uid://pwol3utkvhmw" path="res://scenes/enemy.tscn" id="2_yqjtg"]
 
@@ -15,7 +16,16 @@ distance = -108.0
 [sub_resource type="WorldBoundaryShape2D" id="WorldBoundaryShape2D_lbhrr"]
 distance = -191.0
 
+[sub_resource type="GDScript" id="GDScript_lbhrr"]
+script/source = "extends Area2D
+
+"
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_yqjtg"]
+size = Vector2(413, 249)
+
 [node name="Game" type="Node2D"]
+script = ExtResource("1_lnu2h")
 
 [node name="Camera2D" type="Camera2D" parent="."]
 position = Vector2(-2, 1)
@@ -42,5 +52,15 @@ shape = SubResource("WorldBoundaryShape2D_lnu2h")
 rotation = 4.71239
 shape = SubResource("WorldBoundaryShape2D_lbhrr")
 
+[node name="despawn_area" type="Area2D" parent="boundary"]
+script = SubResource("GDScript_lbhrr")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="boundary/despawn_area"]
+visible = false
+position = Vector2(-0.5, -0.5)
+shape = SubResource("RectangleShape2D_yqjtg")
+
 [node name="enemy" parent="." instance=ExtResource("2_yqjtg")]
 position = Vector2(145, -41)
+
+[connection signal="area_exited" from="boundary/despawn_area" to="." method="_on_despawn_area_area_exited"]
