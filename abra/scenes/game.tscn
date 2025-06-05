@@ -43,4 +43,4 @@ rotation = 4.71239
 shape = SubResource("WorldBoundaryShape2D_lbhrr")
 
 [node name="enemy" parent="." instance=ExtResource("2_yqjtg")]
-position = Vector2(-131, -51)
+position = Vector2(145, -41)
