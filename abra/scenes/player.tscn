@@ -6,16 +6,18 @@
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_g2els"]
 size = Vector2(23, 22.875)
 
-[node name="player" type="CharacterBody2D"]
+[node name="player" type="CharacterBody2D" groups=["player"]]
 collision_layer = 2
+collision_mask = 2
 script = ExtResource("1_g2els")
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
-position = Vector2(12.68, -11.68)
+position = Vector2(1.90735e-06, -1.90735e-06)
 scale = Vector2(0.1925, 0.1925)
 texture = ExtResource("1_3vyb7")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
-position = Vector2(12.5, -11.5625)
 shape = SubResource("RectangleShape2D_g2els")
 one_way_collision_margin = 0.0
+
+[node name="bullet_spawn_position" type="Marker2D" parent="."]

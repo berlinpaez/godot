@@ -14,14 +14,17 @@ script = ExtResource("1_4ra3w")
 scale = Vector2(0.192, 0.192)
 texture = ExtResource("1_7p1mj")
 
-[node name="killzone" parent="." instance=ExtResource("2_md0e3")]
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="killzone"]
-shape = SubResource("RectangleShape2D_md0e3")
-
 [node name="bullet_spawn_position" type="Marker2D" parent="."]
 
 [node name="shoot_timer" type="Timer" parent="."]
+wait_time = 0.8
 autostart = true
+
+[node name="killzone" parent="." instance=ExtResource("2_md0e3")]
+collision_layer = 4
+collision_mask = 16
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="killzone"]
+shape = SubResource("RectangleShape2D_md0e3")
 
 [connection signal="timeout" from="shoot_timer" to="." method="_on_shoot_timer_timeout"]

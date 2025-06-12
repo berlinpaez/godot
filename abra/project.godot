@@ -15,6 +15,11 @@ run/main_scene="uid://c0feoxnk55oty"
 config/features=PackedStringArray("4.4", "Mobile")
 config/icon="res://assets/icon.svg"
 
+[global_group]
+
+player=""
+enemy=""
+
 [rendering]
 
 renderer/rendering_method="mobile"
